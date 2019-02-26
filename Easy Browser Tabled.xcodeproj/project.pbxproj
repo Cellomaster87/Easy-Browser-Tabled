@@ -38,7 +38,7 @@
 		2DB36E4C222455C90033C0B5 = {
 			isa = PBXGroup;
 			children = (
-				2DB36E57222455C90033C0B5 /* Easy Browser */,
+				2DB36E57222455C90033C0B5 /* Easy Browser Tabled */,
 				2DB36E56222455C90033C0B5 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -51,7 +51,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		2DB36E57222455C90033C0B5 /* Easy Browser */ = {
+		2DB36E57222455C90033C0B5 /* Easy Browser Tabled */ = {
 			isa = PBXGroup;
 			children = (
 				2DB36E58222455C90033C0B5 /* AppDelegate.swift */,
@@ -61,7 +61,7 @@
 				2DB36E61222455CA0033C0B5 /* LaunchScreen.storyboard */,
 				2DB36E64222455CA0033C0B5 /* Info.plist */,
 			);
-			path = "Easy Browser";
+			path = "Easy Browser Tabled";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -284,7 +284,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 68Z4323Q26;
-				INFOPLIST_FILE = "Easy Browser/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Easy Browser Tabled/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -302,7 +302,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 68Z4323Q26;
-				INFOPLIST_FILE = "Easy Browser/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Easy Browser Tabled/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
