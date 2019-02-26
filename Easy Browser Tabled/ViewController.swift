@@ -9,11 +9,11 @@
 import UIKit
 import WebKit
 
-class ViewController: UITableViewController, WKNavigationDelegate {
+class ViewController: UIViewController, WKNavigationDelegate {
     // MARK: - Properties
     var webView: WKWebView!
     var progressView: UIProgressView!
-    var websites = ["apple.com", "hackingwithswift.com", "dnd.wizards.com"]
+    var websiteToLoad: String?
     
     // MARK: - Views Managment
     override func loadView() {
@@ -24,9 +24,6 @@ class ViewController: UITableViewController, WKNavigationDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Open button
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Open", style: .plain, target: self, action: #selector(openTapped))
         
         // Toolbar buttons setup
         let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
@@ -45,28 +42,12 @@ class ViewController: UITableViewController, WKNavigationDelegate {
         webView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil)
         
         // Navigation management
-        let url = URL(string: "https://" + websites[0])!
+        let url = URL(string: "https://" + websiteToLoad!)!
         webView.load(URLRequest(url: url))
         webView.allowsBackForwardNavigationGestures = true
     }
     
     // MARK: - Methods
-    @objc func openTapped() {
-        // Alert Controller setup
-        let alertController = UIAlertController(title: "Open page...", message: nil, preferredStyle: .actionSheet)
-        
-        // Alert Action setup
-        for website in websites {
-            alertController.addAction(UIAlertAction(title: website, style: .default, handler: openPage))
-        }
-        
-        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-        alertController.popoverPresentationController?.barButtonItem = self.navigationItem.rightBarButtonItem
-        
-        // Alert presentation
-        present(alertController, animated: true)
-    }
-    
     func openPage(action: UIAlertAction) {
         guard let actionTitle = action.title else { return }
         guard let url = URL(string: "https://" + actionTitle) else { return }
@@ -88,12 +69,10 @@ class ViewController: UITableViewController, WKNavigationDelegate {
         let url = navigationAction.request.url
         
         if let host = url?.host {
-            for website in websites {
-                if host.contains(website) {
-                    decisionHandler(.allow)
-                    
-                    return
-                }
+            if host.contains(websiteToLoad!) {
+                decisionHandler(.allow)
+                
+                return
             }
         }
         
